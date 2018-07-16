@@ -1,7 +1,8 @@
 import serial
 
-serialport = serial.Serial("COM1", 9600, timeout=0.5)
+ser = serial.Serial("COM1", 9600, timeout=0.02)
 
-while True:    
-    command = serialport.read()
-    print (command)
+while True:
+	command = ser.readline()
+	if command:
+		print (command)
