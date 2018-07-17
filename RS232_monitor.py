@@ -2,6 +2,8 @@ import warnings
 import serial
 import serial.tools.list_ports
 
+counter = 0
+
 arduino_ports = [
 	p.device
 	for p in serial.tools.list_ports.comports()
@@ -19,5 +21,13 @@ print ('Started...')
 	
 while True:
 	command = ser.readline()
-	if command:
-		print (command)
+	#if command:
+	#	print (command)
+	
+	if command == b'0':
+		counter += 1
+		print ("counter = " + str(counter))
+	
+	if command == b'255':
+		counter -= 1
+		print ("counter = " + str(counter))
